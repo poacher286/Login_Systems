@@ -105,7 +105,8 @@ public class LoginSystem
 					passwordField.setText(null);
 					frame.setVisible(false);
 					JOptionPane.showMessageDialog(null, "Login Success" , "Info" , JOptionPane.INFORMATION_MESSAGE);
-					Calculator.main(null);
+					Calculator calc = new Calculator();
+					calc.initialize();
 				} else
 				{
 					attempt--;
