@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+
+import calc.Calculator;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -102,6 +105,7 @@ public class LoginSystem
 					passwordField.setText(null);
 					frame.setVisible(false);
 					JOptionPane.showMessageDialog(null, "Login Success" , "Info" , JOptionPane.INFORMATION_MESSAGE);
+					Calculator.main(null);
 				} else
 				{
 					attempt--;
