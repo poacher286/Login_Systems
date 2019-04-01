@@ -14,8 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
 
-public class Calculator
-{
+public class Calculator {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -63,21 +62,16 @@ public class Calculator
 
 	// Valids
 	/**
-	 * Launch the application.
+	 * Create the application.
 	 */
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					Calculator window = new Calculator();
-					window.frame.setVisible(true);
-					window.frame.setTitle("Calculator v1.06");
-				} catch (Exception e)
-				{
+	public Calculator() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setTitle("Calculator v1.06");
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -85,19 +79,10 @@ public class Calculator
 	}
 
 	/**
-	 * Create the application.
-	 */
-	public Calculator()
-	{
-		initialize();
-	}
-
-	/**
 	 * Initialize the contents of the frame.
 	 */
 
-	private void initialize()
-	{
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 663, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,25 +96,17 @@ public class Calculator
 		textField.setColumns(10);
 
 		btnDot = new JButton(".");
-		btnDot.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
-					if (textField.getText().contains(".") == true)
-					{
-						JOptionPane.showMessageDialog(null, "Not Allowed",
-								"Error", JOptionPane.ERROR_MESSAGE);
-					} else
-					{
+		btnDot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
+					if (textField.getText().contains(".") == true) {
+						JOptionPane.showMessageDialog(null, "Not Allowed", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
 						String num = textField.getText() + btnDot.getText();
 						textField.setText(num);
 					}
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Enter 0 first",
-							"Info", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Enter 0 first", "Info", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -138,36 +115,25 @@ public class Calculator
 		frame.getContentPane().add(btnDot);
 
 		btnPlusMinus = new JButton("+/-");
-		btnPlusMinus.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btnPlusMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
-				if (textField.getText().length() != 0)
-				{
+				if (textField.getText().length() != 0) {
 					if ((textField.getText().substring(0, 1).equals("P"))
-							|| (textField.getText().substring(0, 1) == "C"))
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Non-Negative Value", "Data Invalid",
+							|| (textField.getText().substring(0, 1) == "C")) {
+						JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 								JOptionPane.ERROR_MESSAGE);
-					} else if (validateNeg(textField.getText().substring(0, 1)) == false)
-					{
-						double opp = Double.parseDouble(String
-								.valueOf(textField.getText().substring(1)));
+					} else if (validateNeg(textField.getText().substring(0, 1)) == false) {
+						double opp = Double.parseDouble(String.valueOf(textField.getText().substring(1)));
 						opp = opp * (-1);
-						textField.setText(textField.getText().substring(0, 1)
-								+ String.valueOf(opp));
-					} else
-					{
-						double opp = Double.parseDouble(String
-								.valueOf(textField.getText()));
+						textField.setText(textField.getText().substring(0, 1) + String.valueOf(opp));
+					} else {
+						double opp = Double.parseDouble(String.valueOf(textField.getText()));
 						opp = opp * (-1);
 						textField.setText(String.valueOf(opp));
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnPlusMinus.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -175,10 +141,8 @@ public class Calculator
 		frame.getContentPane().add(btnPlusMinus);
 
 		btn0 = new JButton("0");
-		btn0.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn0.getText();
 				textField.setText(num);
 			}
@@ -188,10 +152,8 @@ public class Calculator
 		frame.getContentPane().add(btn0);
 
 		btn1 = new JButton("1");
-		btn1.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn1.getText();
 				textField.setText(num);
 
@@ -202,10 +164,8 @@ public class Calculator
 		frame.getContentPane().add(btn1);
 
 		btn2 = new JButton("2");
-		btn2.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
 				String num = textField.getText() + btn2.getText();
 				textField.setText(num);
@@ -217,10 +177,8 @@ public class Calculator
 		frame.getContentPane().add(btn2);
 
 		btn3 = new JButton("3");
-		btn3.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
 				String num = textField.getText() + btn3.getText();
 				textField.setText(num);
@@ -232,10 +190,8 @@ public class Calculator
 		frame.getContentPane().add(btn3);
 
 		btn4 = new JButton("4");
-		btn4.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn4.getText();
 				textField.setText(num);
 
@@ -246,10 +202,8 @@ public class Calculator
 		frame.getContentPane().add(btn4);
 
 		btn5 = new JButton("5");
-		btn5.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn5.getText();
 				textField.setText(num);
 
@@ -260,10 +214,8 @@ public class Calculator
 		frame.getContentPane().add(btn5);
 
 		btn6 = new JButton("6");
-		btn6.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn6.getText();
 				textField.setText(num);
 
@@ -275,10 +227,8 @@ public class Calculator
 
 		btn7 = new JButton("7");
 		btn7.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btn7.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn7.getText();
 				textField.setText(num);
 
@@ -288,10 +238,8 @@ public class Calculator
 		frame.getContentPane().add(btn7);
 
 		btn8 = new JButton("8");
-		btn8.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String num = textField.getText() + btn8.getText();
 				textField.setText(num);
 
@@ -302,10 +250,8 @@ public class Calculator
 		frame.getContentPane().add(btn8);
 
 		btn9 = new JButton("9");
-		btn9.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
 				String num = textField.getText() + btn9.getText();
 				textField.setText(num);
@@ -318,26 +264,18 @@ public class Calculator
 
 		btnDivide = new JButton("/");
 		btnDivide.setBackground(Color.ORANGE);
-		btnDivide.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
-					if (validateNum(textField.getText().substring(0, 1)) == false)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Invalid Operation", "Error",
-								JOptionPane.ERROR_MESSAGE);
-					} else
-					{
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
+					if (validateNum(textField.getText().substring(0, 1)) == false) {
+						JOptionPane.showMessageDialog(null, "Invalid Operation", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
 						num1 = Double.parseDouble(textField.getText());
 						textField.setText("/");
 						operation = "/";
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnDivide.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -346,26 +284,18 @@ public class Calculator
 
 		btnMulti = new JButton("X");
 		btnMulti.setBackground(Color.ORANGE);
-		btnMulti.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
-					if (validateNum(textField.getText().substring(0, 1)) == false)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Invalid Operation", "Error",
-								JOptionPane.ERROR_MESSAGE);
-					} else
-					{
+		btnMulti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
+					if (validateNum(textField.getText().substring(0, 1)) == false) {
+						JOptionPane.showMessageDialog(null, "Invalid Operation", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
 						num1 = Double.parseDouble(textField.getText());
 						textField.setText("X");
 						operation = "*";
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnMulti.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -374,27 +304,20 @@ public class Calculator
 
 		btnMinus = new JButton("-");
 		btnMinus.setBackground(Color.ORANGE);
-		btnMinus.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btnMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
-				if (textField.getText().length() != 0)
-				{
-					if (validateNum(textField.getText().substring(0, 1)) == false)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Click +/- Button after Entering Number",
-								"Error", JOptionPane.ERROR_MESSAGE);
-					} else
-					{
+				if (textField.getText().length() != 0) {
+					if (validateNum(textField.getText().substring(0, 1)) == false) {
+						JOptionPane.showMessageDialog(null, "Click +/- Button after Entering Number", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
 						num1 = Double.parseDouble(textField.getText());
 						textField.setText("-");
 						operation = "-";
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnMinus.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -403,26 +326,18 @@ public class Calculator
 
 		btnPlus = new JButton("+");
 		btnPlus.setBackground(Color.ORANGE);
-		btnPlus.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
-					if (validateNum(textField.getText().substring(0, 1)) == false)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Invalid Operation", "Error",
-								JOptionPane.ERROR_MESSAGE);
-					} else
-					{
+		btnPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
+					if (validateNum(textField.getText().substring(0, 1)) == false) {
+						JOptionPane.showMessageDialog(null, "Invalid Operation", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
 						num1 = Double.parseDouble(textField.getText());
 						textField.setText("+");
 						operation = "+";
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnPlus.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -430,10 +345,8 @@ public class Calculator
 		frame.getContentPane().add(btnPlus);
 
 		btnC = new JButton("C");
-		btnC.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btnC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				textField.setText(null);
 			}
 		});
@@ -442,13 +355,10 @@ public class Calculator
 		frame.getContentPane().add(btnC);
 
 		btnBack = new JButton("<-");
-		btnBack.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				String back = null;
-				if (textField.getText().length() > 0)
-				{
+				if (textField.getText().length() > 0) {
 					StringBuilder strB = new StringBuilder(textField.getText());
 					strB.deleteCharAt(textField.getText().length() - 1);
 					back = strB.toString();
@@ -462,117 +372,88 @@ public class Calculator
 
 		btnEquals = new JButton("=");
 		btnEquals.setBackground(Color.RED);
-		btnEquals.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnEquals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num2 = Double.parseDouble(textField.getText().substring(1));
-					if (operation == "+")
-					{
-						if (operation1 == "%")
-						{
+					if (operation == "+") {
+						if (operation1 == "%") {
 							result = Math.round((num1 + num3) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
-						} else
-						{
+						} else {
 							result = Math.round((num1 + num2) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 
 					}
-					if (operation == "-")
-					{
-						if (operation1 == "%")
-						{
+					if (operation == "-") {
+						if (operation1 == "%") {
 							result = Math.round((num1 - num3) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
-						} else
-						{
+						} else {
 							result = Math.round((num1 - num2) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 					}
-					if (operation == "*")
-					{
-						if (operation1 == "%")
-						{
+					if (operation == "*") {
+						if (operation1 == "%") {
 							result = Math.round((num1 * num3) * 10000000000.0) / 10000000000.0;
 							;
 							answer = String.valueOf(result);
 							textField.setText(answer);
-						} else
-						{
+						} else {
 							result = Math.round((num1 * num2) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 					}
-					if (operation == "/")
-					{
-						if (operation1 == "%")
-						{
+					if (operation == "/") {
+						if (operation1 == "%") {
 							result = Math.round((num1 / num3) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
-						} else
-						{
+						} else {
 							result = Math.round((num1 / num2) * 10000000000.0) / 10000000000.0;
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 					}
-					if (operation == "P")
-					{
+					if (operation == "P") {
 						// nPr = n!/(n-r)!
-						if (num2 < 0)
-						{
-							JOptionPane.showMessageDialog(null,
-									"Enter Non-Negative Value", "Data Invalid",
+						if (num2 < 0) {
+							JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else if ((num2.intValue() < num2))
-						{
-							JOptionPane.showMessageDialog(null,
-									"Enter Integer Value ", "Data Invalid",
+						} else if ((num2.intValue() < num2)) {
+							JOptionPane.showMessageDialog(null, "Enter Integer Value ", "Data Invalid",
 									JOptionPane.INFORMATION_MESSAGE);
 
-						} else
-						{
+						} else {
 							result = fact(num1) / fact(num1 - num2);
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 					}
-					if (operation == "C")
-					{
+					if (operation == "C") {
 						// nCr = n!/(n-r)!*r!
-						if (num2 < 0)
-						{
-							JOptionPane.showMessageDialog(null,
-									"Enter Non-Negative Value", "Data Invalid",
+						if (num2 < 0) {
+							JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 									JOptionPane.INFORMATION_MESSAGE);
-						} else if ((num2.intValue() < num2))
-						{
-							JOptionPane.showMessageDialog(null,
-									"Enter Integer Value ", "Data Invalid",
+						} else if ((num2.intValue() < num2)) {
+							JOptionPane.showMessageDialog(null, "Enter Integer Value ", "Data Invalid",
 									JOptionPane.INFORMATION_MESSAGE);
 
-						} else
-						{
-							result = fact(num1) / fact(num2)
-									* fact(num1 - num2);
+						} else {
+							result = fact(num1) / fact(num2) * fact(num1 - num2);
 							answer = String.valueOf(result);
 							textField.setText(answer);
 						}
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnEquals.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -581,20 +462,16 @@ public class Calculator
 
 		btnPercent = new JButton("%");
 		btnPercent.setBackground(Color.GREEN);
-		btnPercent.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnPercent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num3 = Double.parseDouble(textField.getText().substring(1));
 					num3 = (num3 * (num1 / 100));
 					answer = String.valueOf(num3);
 					textField.setText(answer);
 					operation1 = "%";
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnPercent.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -603,23 +480,17 @@ public class Calculator
 
 		btnSqrt = new JButton("\u221Ax");
 		btnSqrt.setBackground(Color.GREEN);
-		btnSqrt.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnSqrt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					if (num1 < 0)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Non-Negative Value", "Data Invalid",
+					if (num1 < 0) {
+						JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
 					} else
 						textField.setText(String.valueOf(Math.sqrt(num1)));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnSqrt.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -628,17 +499,13 @@ public class Calculator
 
 		btnSquareX = new JButton("x^2");
 		btnSquareX.setBackground(Color.GREEN);
-		btnSquareX.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnSquareX.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.valueOf(Math.pow(num1, 2)));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnSquareX.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -647,17 +514,13 @@ public class Calculator
 
 		btnOneByX = new JButton("1/x");
 		btnOneByX.setBackground(Color.GREEN);
-		btnOneByX.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnOneByX.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.valueOf(1 / num1));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnOneByX.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -666,17 +529,13 @@ public class Calculator
 
 		btnCubeX = new JButton("x^3");
 		btnCubeX.setBackground(Color.GREEN);
-		btnCubeX.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnCubeX.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.valueOf(Math.pow(num1, 3)));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnCubeX.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -685,32 +544,23 @@ public class Calculator
 
 		btnFactorial = new JButton("n!");
 		btnFactorial.setBackground(new Color(0, 255, 255));
-		btnFactorial.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnFactorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					if (num1 < 0)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Non-Negative Value ", "Data Invalid",
+					if (num1 < 0) {
+						JOptionPane.showMessageDialog(null, "Enter Non-Negative Value ", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
-					} else if ((num1.intValue() < num1))
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Integer Value ", "Data Invalid",
+					} else if ((num1.intValue() < num1)) {
+						JOptionPane.showMessageDialog(null, "Enter Integer Value ", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
 
-					} else
-					{
+					} else {
 						num1 = fact(num1);
 						textField.setText(String.valueOf(num1));
 					}
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnFactorial.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -719,18 +569,13 @@ public class Calculator
 
 		btnSin = new JButton("sin(x)");
 		btnSin.setBackground(new Color(0, 255, 255));
-		btnSin.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnSin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.format("%.15f", Math.sin(num1)));
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
@@ -741,17 +586,13 @@ public class Calculator
 
 		btnCos = new JButton("cos(x)");
 		btnCos.setBackground(new Color(0, 255, 255));
-		btnCos.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnCos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.format("%.15f", Math.cos(num1)));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnCos.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -760,17 +601,13 @@ public class Calculator
 
 		btnTan = new JButton("tan(x)");
 		btnTan.setBackground(new Color(0, 255, 255));
-		btnTan.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnTan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					textField.setText(String.format("%.15f", Math.tan(num1)));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnTan.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -779,18 +616,14 @@ public class Calculator
 
 		btnLog = new JButton("ln(x)");
 		btnLog.setBackground(new Color(0, 255, 255));
-		btnLog.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnLog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					num1 = Math.log(num1);
 					textField.setText(String.valueOf(num1));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnLog.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -799,17 +632,12 @@ public class Calculator
 
 		btnPi = new JButton("\u03C0");
 		btnPi.setBackground(Color.ORANGE);
-		btnPi.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
-					JOptionPane.showMessageDialog(null, "Enter Operation",
-							"Info", JOptionPane.INFORMATION_MESSAGE);
+		btnPi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
+					JOptionPane.showMessageDialog(null, "Enter Operation", "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else
-					textField.setText(textField.getText()
-							+ String.valueOf(Math.PI));
+					textField.setText(textField.getText() + String.valueOf(Math.PI));
 
 			}
 		});
@@ -818,36 +646,28 @@ public class Calculator
 		frame.getContentPane().add(btnPi);
 
 		btnDegree = new JButton("Degree");
-		btnDegree.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnDegree.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					num1 = Math.toDegrees(num1);
 					textField.setText(String.valueOf(num1));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnDegree.setBounds(370, 69, 89, 23);
 		frame.getContentPane().add(btnDegree);
 
 		btnRadian = new JButton("Radian");
-		btnRadian.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnRadian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
 					num1 = Math.toRadians(num1);
 					textField.setText(String.valueOf(num1));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 
 			}
 		});
@@ -856,19 +676,13 @@ public class Calculator
 
 		btnSinInverse = new JButton("sin^-1");
 		btnSinInverse.setBackground(Color.MAGENTA);
-		btnSinInverse.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnSinInverse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					textField.setText(String.format("%.15f",
-							(Math.asin(num1) * (180 / Math.PI))));
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					textField.setText(String.format("%.15f", (Math.asin(num1) * (180 / Math.PI))));
+				} else {
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -878,18 +692,13 @@ public class Calculator
 
 		btnTanInverse = new JButton("tan^-1");
 		btnTanInverse.setBackground(Color.MAGENTA);
-		btnTanInverse.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnTanInverse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					textField.setText(String.format("%.15f",
-							(Math.atan(num1) * (180 / Math.PI))));
+					textField.setText(String.format("%.15f", (Math.atan(num1) * (180 / Math.PI))));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnTanInverse.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -898,18 +707,13 @@ public class Calculator
 
 		btnCosInverse = new JButton("cos^-1");
 		btnCosInverse.setBackground(Color.MAGENTA);
-		btnCosInverse.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnCosInverse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					textField.setText(String.format("%.15f",
-							(Math.acos(num1) * (180 / Math.PI))));
+					textField.setText(String.format("%.15f", (Math.acos(num1) * (180 / Math.PI))));
 				} else
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		btnCosInverse.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -917,12 +721,9 @@ public class Calculator
 		frame.getContentPane().add(btnCosInverse);
 
 		final JRadioButton rdbtnStandard = new JRadioButton("Standard");
-		rdbtnStandard.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (rdbtnStandard.isSelected())
-				{
+		rdbtnStandard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (rdbtnStandard.isSelected()) {
 					enableStandard();
 				}
 			}
@@ -931,12 +732,9 @@ public class Calculator
 		frame.getContentPane().add(rdbtnStandard);
 
 		final JRadioButton rdbtnScientific = new JRadioButton("Scientific");
-		rdbtnScientific.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (rdbtnScientific.isSelected())
-				{
+		rdbtnScientific.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (rdbtnScientific.isSelected()) {
 					enableScientific();
 				}
 			}
@@ -948,33 +746,23 @@ public class Calculator
 		bg.add(rdbtnScientific);
 
 		btnNpr = new JButton("nPr");
-		btnNpr.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnNpr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					if (num1 < 0)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Non-Negative Value", "Data Invalid",
+					if (num1 < 0) {
+						JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
-					} else if ((num1.intValue() < num1))
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Integer Value ", "Data Invalid",
+					} else if ((num1.intValue() < num1)) {
+						JOptionPane.showMessageDialog(null, "Enter Integer Value ", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
 
-					} else
-					{
+					} else {
 						textField.setText("P");
 						operation = "P";
 					}
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -985,33 +773,23 @@ public class Calculator
 		frame.getContentPane().add(btnNpr);
 
 		btnNcr = new JButton("nCr");
-		btnNcr.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-				if (textField.getText().length() != 0)
-				{
+		btnNcr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (textField.getText().length() != 0) {
 					num1 = Double.parseDouble(textField.getText());
-					if (num1 < 0)
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Non-Negative Value", "Data Invalid",
+					if (num1 < 0) {
+						JOptionPane.showMessageDialog(null, "Enter Non-Negative Value", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
-					} else if ((num1.intValue() < num1))
-					{
-						JOptionPane.showMessageDialog(null,
-								"Enter Integer Value ", "Data Invalid",
+					} else if ((num1.intValue() < num1)) {
+						JOptionPane.showMessageDialog(null, "Enter Integer Value ", "Data Invalid",
 								JOptionPane.INFORMATION_MESSAGE);
 
-					} else
-					{
+					} else {
 						textField.setText("C");
 						operation = "C";
 					}
-				} else
-				{
-					JOptionPane.showMessageDialog(null, "Enter Number First",
-							"Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Enter Number First", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -1025,8 +803,7 @@ public class Calculator
 
 	}
 
-	public double fact(double num1)
-	{
+	public double fact(double num1) {
 
 		if (num1 == 0)
 			return 1;
@@ -1037,8 +814,7 @@ public class Calculator
 
 	}
 
-	public void disableAll()
-	{
+	public void disableAll() {
 		btn0.setEnabled(false);
 		btn1.setEnabled(false);
 		btn2.setEnabled(false);
@@ -1077,12 +853,11 @@ public class Calculator
 		textField.setEnabled(false);
 	}
 
-	public void enableStandard()
-	{
+	public void enableStandard() {
 		// JOptionPane.showMessageDialog(null, "Enabling Standard Workspace...",
 		// "Enabling...", JOptionPane.YES_NO_OPTION);
 
-		frame.setBounds(0, 0, 381, 400);
+		frame.setBounds(0, 0, 370, 400);
 		textField.setBounds(10, 11, 350, 43);
 
 		btn0.setEnabled(true);
@@ -1108,8 +883,7 @@ public class Calculator
 		textField.setEnabled(true);
 	}
 
-	public void enableScientific()
-	{
+	public void enableScientific() {
 		// JOptionPane.showMessageDialog(null,
 		// "Enabling Scientific Workspace...",
 		// "Enabling...", JOptionPane.INFORMATION_MESSAGE);
@@ -1157,28 +931,22 @@ public class Calculator
 		btnNpr.setEnabled(true);
 	}
 
-	public static boolean validateNum(String text)
-	{
-		try
-		{
+	public static boolean validateNum(String text) {
+		try {
 			@SuppressWarnings("unused")
 			double d = Double.parseDouble(text);
 			return true;
-		} catch (NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			return true;
 		}
 	}
 
-	public static boolean validateNeg(String text)
-	{
-		try
-		{
+	public static boolean validateNeg(String text) {
+		try {
 			@SuppressWarnings("unused")
 			double d = Double.parseDouble(text);
 			return true;
-		} catch (NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
